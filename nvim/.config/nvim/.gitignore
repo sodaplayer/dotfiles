@@ -1,0 +1,7 @@
+# Netrw caching
+.netrwhist
+
+## Dein (Plugin Manager)
+# Dein hardcodes directories on install.
+dein/
+installer.sh
