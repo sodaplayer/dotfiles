@@ -1,0 +1,5 @@
+setopt vi
+
+setopt globdots
+
+source ~/.config/zsh/prompt.zsh

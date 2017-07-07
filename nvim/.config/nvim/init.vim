@@ -124,6 +124,7 @@ set number
 set ruler
 set shortmess=atI
 set cursorline
+set mouse=a
 
 set listchars=eol:$,tab:t-,trail:~,precedes:<,extends:>
 
