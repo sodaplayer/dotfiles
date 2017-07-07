@@ -1,9 +1,10 @@
-if [[ -a "/etc/zsh/zshrc" ]]; then
+if [[ -a "/etc/zsh/zshrc" ]] &&  grep -q grml /etc/zsh/zshrc; then
 else
-	if [[ -a "~/.zshrc.global" ]]; then
-		source "~/.zshrc.global"
+	GRML_ZSHRC="$ZDOTDIR/.zshrc.global"
+	if [[ -a $GRML_ZSHRC ]]; then
+		source $GRML_ZSHRC  
 	else
-		curl -Lo ~/.zshrc.global http://git.grml.org/f/grml-etc-core/etc/zsh/zshrc
-		source "~/.zshrc.global"
+		curl -Lo $GRML_ZSHRC http://git.grml.org/f/grml-etc-core/etc/zsh/zshrc
+		source $GRML_ZSHRC 	
 	fi
 fi
