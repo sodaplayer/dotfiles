@@ -16,7 +16,7 @@ if dein#load_state('~/.config/nvim/dein')
 
   call dein#add('haya14busa/dein-command.vim')
 
-"  call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+  "  call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
 
   " Colors:
@@ -29,7 +29,7 @@ if dein#load_state('~/.config/nvim/dein')
 
   call dein#add('scrooloose/nerdcommenter')
   call dein#add('scrooloose/nerdtree')
-  
+
   "call dein#add('vim-airline/vim-airline')
   call dein#add('itchyny/lightline.vim')
 
@@ -51,19 +51,34 @@ if dein#load_state('~/.config/nvim/dein')
   " Linting: 
   call dein#add('w0rp/ale')
 
+  let g:ale_lint_on_text_changed = 'never'
+
+  " Tags:
+  call dein#add('majutsushi/tagbar')
+
+  " Utilities:
+  " call dein#add('junegunn/fzf')
+  " call dein#add('junegunn/fzf.vim')
+  call dein#add('cloudhead/neovim-fuzzy')
+  call dein#add('godlygeek/tabular')
+
   " Languages:
   " ----------
 
   " call dein#add('sheerun/vim-polyglot')
-  
-  " C:
-  call dein#add('zchee/deoplete-clang')
+  call dein#add('Shougo/neco-syntax')
 
-  let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
-  let g:deoplete#sources#clang#clang_header = '/usr/include/clang/'
+  " C:
+  call dein#add('Shougo/neoinclude.vim')
+  call dein#add('tweekmonster/deoplete-clang2')
+
+  " Go:
+  call dein#add('fatih/vim-go')
 
   " Latex:
   call dein#add('lervag/vimtex')
+
+  let g:vimtex_view_general_viewer = 'evince'
 
   " Javascript:
   call dein#add('ternjs/tern')
@@ -78,6 +93,9 @@ if dein#load_state('~/.config/nvim/dein')
 
   let g:JavaComplete_LibsPath = '~/class/security/ex1/bobw/libs/'
 
+  " CSS:
+  call dein#add('chrisbra/Colorizer')
+
   " HTML5:
   call dein#add('othree/html5.vim')
 
@@ -90,6 +108,10 @@ if dein#load_state('~/.config/nvim/dein')
   let g:deoplete#sources#rust#disable_keymap=0
   let g:deoplete#sources#rust#documentation_max_height=20
 
+  " Ledger:
+  call dein#add('ledger/vim-ledger')
+
+
 
   " Save:
   call dein#end()
@@ -98,6 +120,7 @@ endif
 
 filetype plugin indent on
 syntax enable
+set omnifunc=syntaxcomplete#Complete
 
 "colorscheme wombat
 
@@ -125,6 +148,7 @@ set ruler
 set shortmess=atI
 set cursorline
 set mouse=a
+set nojoinspaces
 
 set listchars=eol:$,tab:t-,trail:~,precedes:<,extends:>
 
@@ -137,11 +161,24 @@ set autoindent
 set smartindent
 set shiftwidth=4
 set tabstop=4
+set softtabstop=4
+set expandtab
+
 
 
 " Hotkeys:
 
 noremap <Leader><Tab> :NERDTreeToggle<CR>
+noremap <Leader>] :TagbarToggle<CR>
+
+noremap <Leader>f :FuzzyOpen<CR>
+
+noremap <Leader>g :Goyo<CR>
+
+noremap <Leader>ls :VimtexCompileSS<CR>
+
+inoremap <silent> <expr> <C-space> pumvisible() ? "\<Down>" :
+			\ deoplete#mappings#manual_complete()
 
 "Automatic Closing Braces
 inoremap {<CR> {<CR>}<Esc>O
@@ -150,11 +187,12 @@ inoremap {} {}
 
 " Lightline:
 let g:lightline = {
-			\ 'colorscheme': 'gruvbox',
-			\ 'component': {
-			\   'readonly': '%{&readonly?"RO":""}',
-			\ },
-			\ 'separator': { 'left': '', 'right': '' },
-			\ 'subseparator': { 'left': '>', 'right': '<' }
-			\ }
+      \ 'colorscheme': 'gruvbox',
+      \ 'component': {
+      \   'readonly': '%{&readonly?"RO":""}',
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '>', 'right': '<' }
+      \ }
+
 

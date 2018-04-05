@@ -10,3 +10,6 @@ export HISTFILE="$XDG_CACHE_HOME/zsh/.histfile"
 # Enviroment
 export VISUAL="nvim"
 export EDITOR="nvim"
+
+# Go
+export GOPATH="$XDG_DATA_HOME/go"
