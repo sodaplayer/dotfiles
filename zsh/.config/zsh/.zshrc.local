@@ -2,6 +2,7 @@ setopt vi
 
 setopt globdots
 
+source ~/.config/zsh/aliases.zsh
 source ~/.config/zsh/prompt.zsh
 source ~/.config/zsh/keys.zsh
 

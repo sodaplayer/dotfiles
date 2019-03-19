@@ -32,14 +32,13 @@ if dein#load_state('~/.config/nvim/dein')
   call dein#add('scrooloose/nerdcommenter')
   call dein#add('scrooloose/nerdtree')
 
+  call dein#add('yggdroot/indentLine')
+
   "call dein#add('vim-airline/vim-airline')
   call dein#add('itchyny/lightline.vim')
 
   call dein#add('airblade/vim-gitgutter')
 
-  set noshowmode
-  set cmdheight=2
-  let g:echodoc_enable_at_startup = 1
   call dein#add('Shougo/echodoc')
 
   " Prose Writing:
@@ -106,23 +105,14 @@ if dein#load_state('~/.config/nvim/dein')
   " Latex:
   call dein#add('lervag/vimtex')
 
-  let g:vimtex_view_general_viewer = 'evince'
-
   " JSONC:
   call dein#add('neoclide/jsonc.vim')
 
   " Javascript:
   call dein#add('ternjs/tern')
 
-  let g:tern_request_timeout = 1
-  let g:tern_show_signature_in_pum = '0'
-
   " Java:
   call dein#add('artur-shaik/vim-javacomplete2')
-
-  autocmd FileType java setlocal omnifunc=javacomplete#Complete
-
-  let g:JavaComplete_LibsPath = '~/class/security/ex1/bobw/libs/'
 
   " CSS:
   call dein#add('chrisbra/Colorizer')
@@ -152,8 +142,6 @@ if dein#load_state('~/.config/nvim/dein')
   " Python:
   " call dein#add('zchee/deoplete-jedi')
   call dein#add('davidhalter/jedi-vim')
-
-  let g:python3_host_prog = '/home/john/.virtualenvs/neovim/bin/python'
 
   " Save:
   call dein#end()
@@ -187,7 +175,7 @@ set smartcase
 set visualbell
 set number
 set ruler
-set shortmess=atI
+set shortmess=atIc
 set cursorline
 set mouse=a
 set nojoinspaces
@@ -211,6 +199,21 @@ set expandtab
 "autocmd CursorHold * silent call CocActionAsync('showSignatureHelp')
 autocmd CursorHoldI, CursorMovedI * call CocAction('showSignatureHelp')
 
+" Plugin Settings:
+set noshowmode
+set cmdheight=2
+let g:echodoc_enable_at_startup = 1
+let g:vimtex_view_general_viewer = 'evince'
+let g:tern_request_timeout = 1
+let g:tern_show_signature_in_pum = '0'
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+let g:NERDTreeDirArrowCollapsible = '~'
+let g:NERDTreeDirArrowExpandable = '+'
+
+let g:python3_host_prog = '/home/john/.virtualenvs/neovim/bin/python'
+
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 " Hotkeys:
 
