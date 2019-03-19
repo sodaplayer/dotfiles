@@ -1,0 +1,29 @@
+{
+  "languageserver": {
+    "reason": {
+      "command": "ocamlmerlin-lsp",
+      "filetypes": ["reason", "ocaml"]
+    }
+  }, 
+
+  // "languageserver": {
+  //   "reason": {
+  //     "command": "ocaml-language-server",
+  //     "args": ["--stdio"],
+  //     "filetypes": ["reason", "ocaml"]
+  //   }
+  // }, 
+
+  // "languageserver": {
+  //   "reason": {
+  //     "command": "reason-language-server",
+  //     "filetypes": ["reason", "ocaml"]
+  //   }
+  // }, 
+
+  "coc.preferences.triggerAfterInsertEnter": true,
+  "coc.preferences.echodocSupport": false,
+  "coc.preferences.codeLens.enable": true,
+  "coc.preferences.warningSign.separator": "",
+  "coc.preferences.codeLens.separator": ""
+}
