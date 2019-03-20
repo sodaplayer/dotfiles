@@ -24,6 +24,8 @@ if dein#load_state('~/.config/nvim/dein')
   " Colors:
   call dein#add('sheerun/vim-wombat-scheme')
   call dein#add('morhetz/gruvbox')
+  call dein#add('junegunn/rainbow_parentheses.vim')
+  
 
 
   " General:
@@ -115,7 +117,6 @@ if dein#load_state('~/.config/nvim/dein')
   call dein#add('artur-shaik/vim-javacomplete2')
 
   " CSS:
-  call dein#add('chrisbra/Colorizer')
 
   " HTML5:
   call dein#add('othree/html5.vim')
@@ -154,6 +155,7 @@ set omnifunc=syntaxcomplete#Complete
 
 "colorscheme wombat
 
+let g:gruvbox_italic = '1'
 let g:gruvbox_contrast_light = 'hard'
 let g:gruvbox_contrast_dark = 'hard'
 
@@ -162,6 +164,9 @@ set termguicolors "urxvt lacks 24-bit color.
 colorscheme gruvbox
 
 set colorcolumn=81
+
+hi! link CocCodeLens GruvboxYellowSign
+hi! link CocPumFloatingDetail Pmenu
 
 " If you want to install not installed plugins on startup.
 "if dein#check_install()
@@ -175,16 +180,18 @@ set smartcase
 set visualbell
 set number
 set ruler
-set shortmess=atIc
+" set shortmess=atIc
+set shortmess+=c
 set cursorline
 set mouse=a
 set nojoinspaces
+set updatetime=300
 
 set listchars=eol:$,tab:t-,trail:~,precedes:<,extends:>
 
 set display+=lastline
 
-set completeopt=longest,menuone
+set completeopt=longest,menuone,preview
 
 " Formatting:
 set autoindent
@@ -194,10 +201,6 @@ set tabstop=4
 set softtabstop=4
 set expandtab
 
-
-" 
-"autocmd CursorHold * silent call CocActionAsync('showSignatureHelp')
-autocmd CursorHoldI, CursorMovedI * call CocAction('showSignatureHelp')
 
 " Plugin Settings:
 set noshowmode
@@ -213,7 +216,21 @@ let g:NERDTreeDirArrowExpandable = '+'
 
 let g:python3_host_prog = '/home/john/.virtualenvs/neovim/bin/python'
 
+let g:rainbow#max_level = 8
+
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
+autocmd CursorHoldI, CursorMovedI * call CocAction('showSignatureHelp')
+
+
+" TEMP:
+function! SynStack()
+    if !exists("*synstack")
+        return
+    endif
+    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
 
 " Hotkeys:
 
@@ -225,22 +242,44 @@ noremap <Leader>f :FuzzyOpen<CR>
 
 " noremap <Leader>g :Goyo<CR>
 
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
 nmap <silent> <Leader>gd <Plug>(coc-definition)
 nmap <silent> <Leader>gt <Plug>(coc-type-definition)
 nmap <silent> <Leader>ge <Plug>(coc-diagnostic-info)
+nmap <silent> <Leader>gr <Plug>(coc-rename)
+
+nmap <silent> <Leader>er :RainbowParentheses!!<CR>
 
 vmap <silent> <Leader>gf <Plug>(coc-format-selected)
 nmap <silent> <Leader>gf <Plug>(coc-format-selected)
 
-nmap <Leader>gd :call CocAction('showSignatureHelp')<CR>
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+inoremap <silent> <expr> <C-space> coc#refresh()
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" TODO FIX
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+set keywordprg=:call\ <SID>show_documentation()
+
+autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+
+nmap <Leader>gs :call CocAction('showSignatureHelp')<CR>
 
 noremap <Leader>ls :VimtexCompileSS<CR>
 
 
 noremap <Leader>x :CocList<CR>
-
-inoremap <silent> <expr> <C-space> pumvisible() ? "\<Down>" :
-			\ coc#refresh()
 
 " noremap <A-CR> :call LanguageClient_contextMenu()<CR>
 " inoremap <A-CR> <Esc>:call LanguageClient_contextMenu()<CR>

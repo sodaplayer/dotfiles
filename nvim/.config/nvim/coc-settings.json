@@ -21,9 +21,12 @@
   //   }
   // }, 
 
-  "coc.preferences.triggerAfterInsertEnter": true,
-  "coc.preferences.echodocSupport": false,
-  "coc.preferences.codeLens.enable": true,
-  "coc.preferences.warningSign.separator": "",
-  "coc.preferences.codeLens.separator": ""
+  "suggest.acceptSuggestionOnCommitCharacter": true,
+  "suggest.noselect": false,
+  "suggest.echodocSupport": true,
+  "suggest.enablePreview": true,
+  "codeLens.enable": true,
+  "diagnostic.warningSign": "w",
+  "codeLens.separator": "",
+
 }
