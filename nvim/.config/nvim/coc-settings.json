@@ -1,10 +1,10 @@
 {
-  "languageserver": {
-    "reason": {
-      "command": "ocamlmerlin-lsp",
-      "filetypes": ["reason", "ocaml"]
-    }
-  }, 
+  // "languageserver": {
+  //   "reason": {
+  //     "command": "ocamlmerlin-lsp",
+  //     "filetypes": ["reason", "ocaml"]
+  //   }
+  // }, 
 
   // "languageserver": {
   //   "reason": {
@@ -21,10 +21,15 @@
   //   }
   // }, 
 
+  "signature.target": "float",
+  "suggest.detailField": "preview", // Type signatures go into the detail preview
   "suggest.acceptSuggestionOnCommitCharacter": true,
-  "suggest.noselect": false,
+  // "suggest.noselect": false,
   "suggest.echodocSupport": true,
   "suggest.enablePreview": true,
+  // "suggest.reloadPumOnInsertChar": true,
+  "coc.preferences.hoverTarget": "echo",
+  "coc.preferences.previewAutoClose": false,
   "codeLens.enable": true,
   "diagnostic.warningSign": "w",
   "codeLens.separator": "",

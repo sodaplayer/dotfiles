@@ -32,7 +32,9 @@ if dein#load_state('~/.config/nvim/dein')
   " --------
 
   call dein#add('scrooloose/nerdcommenter')
-  call dein#add('scrooloose/nerdtree')
+
+  call dein#add('scrooloose/nerdtree',
+              \ {'on_cmd': 'NERDTreeToggle'})
 
   call dein#add('yggdroot/indentLine')
 
@@ -45,6 +47,10 @@ if dein#load_state('~/.config/nvim/dein')
 
   " Prose Writing:
   call dein#add('junegunn/goyo.vim')
+
+  call dein#add('vimwiki/vimwiki') ", {
+              " \ 'on_cmd': 'VimwikiIndex'
+              " \ })
 
   " Completion:
   
@@ -72,7 +78,8 @@ if dein#load_state('~/.config/nvim/dein')
 
 
   " Tags:
-  call dein#add('majutsushi/tagbar')
+  " call dein#add('majutsushi/tagbar')
+  call dein#add('liuchengxu/vista.vim')
 
   " Utilities:
   " call dein#add('junegunn/fzf')
@@ -167,6 +174,7 @@ set colorcolumn=81
 
 hi! link CocCodeLens GruvboxYellowSign
 hi! link CocPumFloatingDetail Pmenu
+hi! link CocFloating GruvboxFg2
 
 " If you want to install not installed plugins on startup.
 "if dein#check_install()
@@ -209,7 +217,8 @@ let g:echodoc_enable_at_startup = 1
 let g:vimtex_view_general_viewer = 'evince'
 let g:tern_request_timeout = 1
 let g:tern_show_signature_in_pum = '0'
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+"let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_char_list = ['│', '╎', '┆', '┊']
 
 let g:NERDTreeDirArrowCollapsible = '~'
 let g:NERDTreeDirArrowExpandable = '+'
@@ -217,6 +226,8 @@ let g:NERDTreeDirArrowExpandable = '+'
 let g:python3_host_prog = '/home/john/.virtualenvs/neovim/bin/python'
 
 let g:rainbow#max_level = 8
+
+let g:vimwiki_list = [{'path': '~/docs/wiki/'}]
 
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
@@ -235,7 +246,7 @@ endfunc
 " Hotkeys:
 
 noremap <Leader><Tab> :NERDTreeToggle<CR>
-noremap <Leader>] :TagbarToggle<CR>
+noremap <Leader>] :Vista!!<CR>
 
 
 noremap <Leader>f :FuzzyOpen<CR>
