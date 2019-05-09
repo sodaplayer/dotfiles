@@ -1,10 +1,11 @@
 {
-  // "languageserver": {
-  //   "reason": {
-  //     "command": "ocamlmerlin-lsp",
-  //     "filetypes": ["reason", "ocaml"]
-  //   }
-  // }, 
+  "languageserver": {
+    "reason": {
+      "command": "ocamlmerlin-lsp",
+      "filetypes": ["reason", "ocaml"],
+      "trace.server": "verbose",
+    }
+  }, 
 
   // "languageserver": {
   //   "reason": {
@@ -28,10 +29,12 @@
   "suggest.echodocSupport": true,
   "suggest.enablePreview": true,
   // "suggest.reloadPumOnInsertChar": true,
-  "coc.preferences.hoverTarget": "echo",
+  // "coc.preferences.hoverTarget": "echo",
   "coc.preferences.previewAutoClose": false,
   "codeLens.enable": true,
+  "diagnostic.enableMessage": "always",
   "diagnostic.warningSign": "w",
+  // "diagnostic.messageTarget": "echo",
   "codeLens.separator": "",
 
 }

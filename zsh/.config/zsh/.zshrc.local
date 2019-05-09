@@ -6,6 +6,13 @@ source ~/.config/zsh/aliases.zsh
 source ~/.config/zsh/prompt.zsh
 source ~/.config/zsh/keys.zsh
 
+source ~/.config/zsh/fzf-settings.zsh
+
+[ -f /usr/share/fzf/key-bindings.zsh ] \
+&& [ -f /usr/share/fzf/completion.zsh ] \
+&& source /usr/share/fzf/key-bindings.zsh \
+&& source /usr/share/fzf/completion.zsh
+
 # Opam Hook
 test -r /home/john/.opam/opam-init/init.zsh && . /home/john/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 

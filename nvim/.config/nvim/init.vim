@@ -36,6 +36,8 @@ if dein#load_state('~/.config/nvim/dein')
   call dein#add('scrooloose/nerdtree',
               \ {'on_cmd': 'NERDTreeToggle'})
 
+  call dein#add('Shougo/defx.nvim')
+
   call dein#add('yggdroot/indentLine')
 
   "call dein#add('vim-airline/vim-airline')
@@ -44,6 +46,8 @@ if dein#load_state('~/.config/nvim/dein')
   call dein#add('airblade/vim-gitgutter')
 
   call dein#add('Shougo/echodoc')
+
+  call dein#add('salsifis/vim-transpose')
 
   " Prose Writing:
   call dein#add('junegunn/goyo.vim')
@@ -87,6 +91,7 @@ if dein#load_state('~/.config/nvim/dein')
   call dein#add('cloudhead/neovim-fuzzy')
   call dein#add('godlygeek/tabular')
   call dein#add('tpope/vim-surround')
+  call dein#add('AndrewRadev/sideways.vim')
 
   " Languages:
   " ----------
@@ -172,6 +177,8 @@ colorscheme gruvbox
 
 set colorcolumn=81
 
+set pumblend=20
+
 hi! link CocCodeLens GruvboxYellowSign
 hi! link CocPumFloatingDetail Pmenu
 hi! link CocFloating GruvboxFg2
@@ -193,7 +200,7 @@ set shortmess+=c
 set cursorline
 set mouse=a
 set nojoinspaces
-set updatetime=300
+set updatetime=3000
 
 set listchars=eol:$,tab:t-,trail:~,precedes:<,extends:>
 
@@ -222,6 +229,7 @@ let g:indentLine_char_list = ['│', '╎', '┆', '┊']
 
 let g:NERDTreeDirArrowCollapsible = '~'
 let g:NERDTreeDirArrowExpandable = '+'
+let g:NERDTreeIgnore = ['\.bs.js$', '\~$']
 
 let g:python3_host_prog = '/home/john/.virtualenvs/neovim/bin/python'
 
@@ -273,7 +281,7 @@ inoremap <silent> <expr> <C-space> coc#refresh()
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " TODO FIX
-function! s:show_documentation()
+function! Show_documentation()
   if &filetype == 'vim'
     execute 'h '.expand('<cword>')
   else
@@ -281,7 +289,7 @@ function! s:show_documentation()
   endif
 endfunction
 
-set keywordprg=:call\ <SID>show_documentation()
+set keywordprg=:call\ Show_documentation()
 
 autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 
