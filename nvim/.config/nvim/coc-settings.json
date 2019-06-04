@@ -1,26 +1,39 @@
 {
   "languageserver": {
-    "reason": {
-      "command": "ocamlmerlin-lsp",
-      "filetypes": ["reason", "ocaml"],
+    "haxe": {
+      "command": "node",
+      // "args": ["~/.vscode-oss/extensions/nadako.vshaxe-2.9.2/server/bin/server.js"],
+      "args": ["/home/john/code/haxe/vshaxe/server/bin/server.js"],
+      "filetypes": ["haxe"],
       "trace.server": "verbose",
-    }
+      "initializationOptions": {
+        "displayArguments": ["build.hxml"]
+      },
+      "settings": {
+        "haxe.executable":"haxe"
+      }
+    }, 
+
+    "elixir_ls": {
+      "command": "/home/john/code/language-tools/elixir/elixir-ls/release/language_server.sh",
+      "filetypes": ["elixir", "eelixir"]
+    },
+
+    // "reason": {
+    //   "command": "ocamlmerlin-lsp",
+    //   "filetypes": ["reason", "ocaml"],
+    //   "trace.server": "verbose",
+    // }
+   // "reason": {
+   //   "command": "ocaml-language-server",
+   //   "args": ["--stdio"],
+   //   "filetypes": ["reason", "ocaml"]
+   // }
+     "reason": {
+       "command": "reason-language-server",
+       "filetypes": ["reason", "ocaml"]
+     }
   }, 
-
-  // "languageserver": {
-  //   "reason": {
-  //     "command": "ocaml-language-server",
-  //     "args": ["--stdio"],
-  //     "filetypes": ["reason", "ocaml"]
-  //   }
-  // }, 
-
-  // "languageserver": {
-  //   "reason": {
-  //     "command": "reason-language-server",
-  //     "filetypes": ["reason", "ocaml"]
-  //   }
-  // }, 
 
   "signature.target": "float",
   "suggest.detailField": "preview", // Type signatures go into the detail preview

@@ -49,6 +49,8 @@ if dein#load_state('~/.config/nvim/dein')
 
   call dein#add('salsifis/vim-transpose')
 
+  call dein#add('machakann/vim-highlightedyank')
+
   " Prose Writing:
   call dein#add('junegunn/goyo.vim')
 
@@ -86,12 +88,13 @@ if dein#load_state('~/.config/nvim/dein')
   call dein#add('liuchengxu/vista.vim')
 
   " Utilities:
-  " call dein#add('junegunn/fzf')
+  call dein#add('junegunn/fzf')
   " call dein#add('junegunn/fzf.vim')
   call dein#add('cloudhead/neovim-fuzzy')
   call dein#add('godlygeek/tabular')
   call dein#add('tpope/vim-surround')
   call dein#add('AndrewRadev/sideways.vim')
+  call dein#add('Alok/notational-fzf-vim')
 
   " Languages:
   " ----------
@@ -155,6 +158,10 @@ if dein#load_state('~/.config/nvim/dein')
   " Python:
   " call dein#add('zchee/deoplete-jedi')
   call dein#add('davidhalter/jedi-vim')
+
+  " Elixir:
+  call dein#add('elixir-editors/vim-elixir')
+  call dein#add('mhinz/vim-mix-format')
 
   " Save:
   call dein#end()
@@ -226,6 +233,7 @@ let g:tern_request_timeout = 1
 let g:tern_show_signature_in_pum = '0'
 "let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 let g:indentLine_char_list = ['│', '╎', '┆', '┊']
+let g:indentLine_concealcursor=""
 
 let g:NERDTreeDirArrowCollapsible = '~'
 let g:NERDTreeDirArrowExpandable = '+'
@@ -237,10 +245,15 @@ let g:rainbow#max_level = 8
 
 let g:vimwiki_list = [{'path': '~/docs/wiki/'}]
 
+let g:highlightedyank_highlight_duration = 100
+
+let g:nv_search_paths = ['~/docs/notes/', '~/docs/wiki']
+let g:vimtex_compiler_progname = 'nvr'
+
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
-autocmd CursorHoldI, CursorMovedI * call CocAction('showSignatureHelp')
+autocmd CursorHoldI, CursorMovedI * call CocActionAsync('showSignatureHelp')
 
 
 " TEMP:
@@ -279,6 +292,8 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 inoremap <silent> <expr> <C-space> coc#refresh()
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+nmap <silent> <Leader>n :NV<CR>
 
 " TODO FIX
 function! Show_documentation()
