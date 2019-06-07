@@ -1,3 +1,5 @@
-let s:dein_dir = stdpath('data') . '/dein'
+let s:plugged_dir = stdpath('data') . '/plugged'
 
-set runtimepath^=s:dein_dir
+if exists('g:loaded_plug')
+    echo vim-plugged not installed
+endif
