@@ -35,7 +35,7 @@ if exists('*minpac#init')
     call minpac#add('junegunn/fzf')
 
     if (executable('npm'))
-        call minpac#add('neoclide/coc.nvim', {'do': 'call coc#util#install()'})
+        call minpac#add('neoclide/coc.nvim', {'do': './install.sh', 'branch': 'release'})
     endif
 
 endif
