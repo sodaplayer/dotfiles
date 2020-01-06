@@ -20,3 +20,8 @@ export npm_config_prefix=~/.node_modules
 
 # Desk
 export DESK_DIR="$XDG_CONFIG_HOME/desk"
+
+# FZF
+if (( $+commands[rg] )); then
+    export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+fi

@@ -32,7 +32,54 @@ if exists('*minpac#init')
     call minpac#add('scrooloose/nerdcommenter')
     call minpac#add('scrooloose/nerdtree')
 
+    call minpac#add('tpope/vim-repeat')
+    call minpac#add('tpope/vim-surround')
+    call minpac#add('tpope/vim-endwise')
+
     call minpac#add('junegunn/fzf')
+    call minpac#add('junegunn/fzf.vim')
+
+    call minpac#add('vimwiki/vimwiki')
+
+    call minpac#add('alok/notational-fzf-vim')
+
+    " call minpac#add('reasonml-editor/vim-reason-plus')
+    call minpac#add('sodaplayer/vim-reason-plus', {'branch': 'patch-1'})
+
+    call minpac#add('jpalardy/vim-slime')
+    call minpac#add('wlangstroth/vim-racket')
+
+    " Plai-Typed
+    " call minpac#add('johnfresco/vim-plai-typed')
+
+    " Clojure
+    call minpac#add('tpope/vim-salve')
+    call minpac#add('tpope/vim-fireplace')
+    call minpac#add('tpope/vim-dispatch')
+    call minpac#add('tpope/vim-projectionist')
+    call minpac#add('tpope/vim-sexp-mappings-for-regular-people')
+    call minpac#add('guns/vim-sexp')
+    call minpac#add('guns/vim-clojure-highlight')
+    call minpac#add('guns/vim-clojure-static')
+
+    " Go
+    call minpac#add('fatih/vim-go')
+    " , { 'do', ':GoUpdateBinaries' })
+
+    " Jupyter
+    call minpac#add('jupyter-vim/jupyter-vim')
+
+    " CSS
+    call minpac#add('stephenway/postcss.vim')
+
+    " LaTeX
+    call minpac#add('lervag/vimtex')
+
+    " LDPL
+    call minpac#add('araml/ldpl.vim')
+
+    " Arduino
+    call minpac#add('stevearc/vim-arduino')
 
     if (executable('npm'))
         call minpac#add('neoclide/coc.nvim', {'do': './install.sh', 'branch': 'release'})
@@ -55,16 +102,43 @@ endtry
 " }}}
 
 " Hotkeys: {{{
+let maplocalleader = "\<space>"
+
+inoremap <silent><expr> <c-space> coc#refresh()
+
 noremap <Leader><Tab> :NERDTreeToggle<CR>
 
 noremap <Leader>ev :vsplit $MYVIMRC<CR>
 noremap <Leader>sv :source $MYVIMRC<CR>
+
+nmap <silent> <Leader>er :RainbowParentheses!!<CR>
+
+nmap <Leader>ff <Plug>(coc-format-selected)
+vmap <Leader>ff <Plug>(coc-format-selected)
+
+nmap <Leader>fr <Plug>(coc-rename)
+vmap <Leader>fr <Plug>(coc-rename)
+
+nmap <Leader>fc <Plug>(coc-fix-current)
+vmap <Leader>fc <Plug>(coc-fix-current)
+
+nmap <Leader>wp :Files ~/docs/wiki<CR>
+
+nmap <Leader>p :Files<CR>
 " }}}
 
 " Plugin Settings: {{{
 let g:NERDTreeDirArrowCollapsible = '~'
 let g:NERDTreeDirArrowExpandable = '+'
 let g:NERDTreeIgnore = ['\.bs.js$', '\~$']
+
+let g:sexp_enable_insert_mode_mappings = 0
+
+let g:slime_target = "tmux"
+
+let g:vimwiki_list = [{'path': '~/docs/wiki/'}]
+
+let g:nv_search_paths = ['~/docs/wiki']
 " }}}
 
 

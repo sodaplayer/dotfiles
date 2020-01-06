@@ -1,5 +1,15 @@
 {
   "languageserver": {
+    "clojure-lsp": {
+      "command": "bash",
+      "args": ["-c", "clojure-lsp"],
+      "filetypes": ["clojure"],
+      "rootPatterns": ["project.clj"],
+      "additionalSchemes": ["jar", "zipfile"],
+      "trace.server": "verbose",
+      "initializationOptions": {
+      }
+    },
     "haxe": {
       "command": "node",
       // "args": ["~/.vscode-oss/extensions/nadako.vshaxe-2.9.2/server/bin/server.js"],
@@ -19,19 +29,32 @@
       "filetypes": ["elixir", "eelixir"]
     },
 
-    // "reason": {
-    //   "command": "ocamlmerlin-lsp",
-    //   "filetypes": ["reason", "ocaml"],
-    //   "trace.server": "verbose",
-    // }
+    "reason": {
+      // "command": "ocamlmerlin-lsp",
+      "command": "ocamllsp",
+      "filetypes": ["reason", "ocaml"],
+      "trace.server": "verbose",
+    },
    // "reason": {
    //   "command": "ocaml-language-server",
    //   "args": ["--stdio"],
    //   "filetypes": ["reason", "ocaml"]
    // }
-     "reason": {
-       "command": "reason-language-server",
-       "filetypes": ["reason", "ocaml"]
+   //  "reason": {
+   //    "command": "/home/john/code/os/reason-language-server/reason-language-server-source/reason-language-server/bin.exe",
+   //    "filetypes": ["reason", "ocaml"],
+   //    "settings": {
+   //      "reason_language_server": {
+   //        "per_value_codelens": true,
+   //        "opens_codelens": true,
+   //      }
+   //    }
+   //  },
+
+     "golang": {
+      "command": "/home/john/.local/share/go/bin/gopls",
+      "rootPatterns": ["go.mod"],
+      "filetypes": ["go"]
      }
   }, 
 
@@ -49,5 +72,7 @@
   "diagnostic.warningSign": "w",
   // "diagnostic.messageTarget": "echo",
   "codeLens.separator": "",
+  //"coc.preferences.formatOnSaveFiletypes":["reason"]
+  "tailwindCSS.emmetCompletions": true,
 
 }

@@ -10,6 +10,8 @@ source ~/.config/zsh/keys.zsh
 
 source ~/.config/zsh/fzf-settings.zsh
 
+source ~/.config/zsh/journal.zsh
+
 [ -f /usr/share/fzf/key-bindings.zsh ] \
 && [ -f /usr/share/fzf/completion.zsh ] \
 && source /usr/share/fzf/key-bindings.zsh \
