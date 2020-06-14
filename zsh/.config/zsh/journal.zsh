@@ -1,7 +1,7 @@
 # From tomlockwood/dn
 
 # Daily Notes Aliases
-export DN_PATH=~/dn
+export DN_PATH=~/docs/journal
 
 dn() {
   echo " * $1" >> $DN_PATH/$(date "+%Y-%m-%d")
@@ -12,7 +12,7 @@ dno() {
 }
 
 dnoe() {
-  vim $DN_PATH/$1
+  nvim $DN_PATH/$1
 }
 
 dnt() {
@@ -21,7 +21,7 @@ dnt() {
 }
 
 dnte() {
-  vim $DN_PATH/$(date "+%Y-%m-%d")
+  nvim $DN_PATH/$(date "+%Y-%m-%d")
 }
   
 dnv() {

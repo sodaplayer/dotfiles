@@ -22,12 +22,12 @@
       "settings": {
         "haxe.executable":"haxe"
       }
-    }, 
-
-    "elixir_ls": {
-      "command": "/home/john/code/language-tools/elixir/elixir-ls/release/language_server.sh",
-      "filetypes": ["elixir", "eelixir"]
     },
+
+    // "elixir_ls": {
+    //   "command": "/home/john/code/language-tools/elixir/elixir-ls/release/language_server.sh",
+    //   "filetypes": ["elixir", "eelixir"]
+    // },
 
     "reason": {
       // "command": "ocamlmerlin-lsp",
@@ -56,7 +56,7 @@
       "rootPatterns": ["go.mod"],
       "filetypes": ["go"]
      }
-  }, 
+  },
 
   "signature.target": "float",
   "suggest.detailField": "preview", // Type signatures go into the detail preview
@@ -74,5 +74,15 @@
   "codeLens.separator": "",
   //"coc.preferences.formatOnSaveFiletypes":["reason"]
   "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.jsLanguages": [ "javascript", "javascriptreact", "reason", "typescript", "typescriptreact" ],
+  "tailwindCSS.trace.server":"verbose",
+  "tailwindCSS.headwind.classRegex": {
+    "typescript": "(?:\\bm\\(\\s*[\\\"\\'][_a-zA-Z0-9\\s\\-\\:\\/]*\\.([_a-zA-Z0-9\\s\\-\\:\\/]+)[\\\"\\'])|(?:\\btw\\s*`([_a-zA-Z0-9\\s\\-\\:\\/]*)`)"
 
+  },
+    // "typescript": "(?:\\bclass\\s*:\\s*[\\\"\\']([_a-zA-Z0-9\\s\\-\\:\\/]+)[\\\"\\'])|(?:\\btw\\s*`([_a-zA-Z0-9\\s\\-\\:\\/]*)`)"
+
+  "coc.source.mithrilclasses.enable": true,
+  "coc.source.mithrilclasses.disableSyntaxes": [],
+  "elixir.pathToElixirLS": "~/code/language-tools/elixir/elixir-ls/release/language_server.sh"
 }

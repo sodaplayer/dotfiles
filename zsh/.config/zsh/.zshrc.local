@@ -12,6 +12,7 @@ source ~/.config/zsh/fzf-settings.zsh
 
 source ~/.config/zsh/journal.zsh
 
+
 [ -f /usr/share/fzf/key-bindings.zsh ] \
 && [ -f /usr/share/fzf/completion.zsh ] \
 && source /usr/share/fzf/key-bindings.zsh \
@@ -22,3 +23,12 @@ test -r /home/john/.opam/opam-init/init.zsh && . /home/john/.opam/opam-init/init
 
 # Desk Hook
 [ -n "$DESK_ENV" ] && source "$DESK_ENV" || true
+
+# Octave
+source ~/.config/zsh/octave.zsh
+
+# Elixir
+source ~/.config/zsh/elixir.zsh
+
+# Python
+source ~/.config/zsh/python.zsh

@@ -1,5 +1,5 @@
-alias cdproj="cd ~/class/fp/santorini"
-alias repl="cd ~/class/fp/santorini; dune utop src/lib -- -require rtop; cd -"
+alias cdproj="cd ~/class/.archive/2019-spring/fp/santorini"
+alias repl="cd ~/class/.archive/2019-spring/fp/santorini; dune utop src/lib -- -require rtop; cd -"
 
-cd ~/class/fp/santorini
+cd ~/class/.archive/2019-spring/fp/santorini/
 
