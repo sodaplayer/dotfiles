@@ -101,6 +101,9 @@ if exists('*minpac#init')
     " Arduino
     call minpac#add('stevearc/vim-arduino')
 
+    " SCAD
+    call minpac#add('sirtaj/vim-openscad')
+
     if (executable('npm'))
         call minpac#add('neoclide/coc.nvim', {'do': './install.sh', 'branch': 'release'})
     endif
