@@ -1,0 +1,31 @@
+#! /bin/sh
+sxhkd &
+
+bspc config -m LVDS1 border_width        1
+bspc config -m LVDS1 window_gap          0
+bspc config -m LVDS1 split_ratio         0.5
+bspc config -m LVDS1 borderless_monocle  false
+bspc config -m LVDS1 gapless_monocle     false
+bspc config -m LVDS1 top_padding         0
+bspc config click_to_focus               true
+bspc config pointer_modifier             mod4
+
+bspc rule -a Gimp floating=on
+#bspc rule -a Chromium desktop=^2
+bspc rule -a Screenkey manage=off
+#bspc rule -a sun-awt-X11-XFramePeer floating=on
+bspc rule -a Steam follow=off
+#bspc rule -a firefox-nightly tiling=on
+# bspc rule -a Nightly state=tiled
+
+
+bspc monitor -d 1 2 3 4 5 6 7 8 9 0
+
+# xiccd &
+# /etc/profile.d/infinality-settings.sh
+
+# corrupter -add 0 -bheight 30 -boffset 100 -mag 1 - < ~/downloads/bliss.png | feh --bg-fill - &
+
+# ~/.bin/bliss &
+# feh --bg-fill ~/downloads/bliss-600dpi.png &
+# xsetroot -cursor_name left_ptr &
