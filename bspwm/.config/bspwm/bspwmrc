@@ -1,14 +1,18 @@
 #! /bin/sh
 sxhkd &
 
-bspc config -m LVDS1 border_width        1
-bspc config -m LVDS1 window_gap          0
-bspc config -m LVDS1 split_ratio         0.5
-bspc config -m LVDS1 borderless_monocle  false
-bspc config -m LVDS1 gapless_monocle     false
-bspc config -m LVDS1 top_padding         0
+bspc config border_width        2
+bspc config window_gap          0
+bspc config split_ratio         0.5
+bspc config borderless_monocle  false
+bspc config gapless_monocle     false
+bspc config top_padding         0
 bspc config click_to_focus               true
+bspc config ignore_ewmh_focus            true
 bspc config pointer_modifier             mod4
+
+bspc config focused_border_color \#EBB734
+bspc config active_border_color \#8a773b
 
 bspc rule -a Gimp floating=on
 #bspc rule -a Chromium desktop=^2
@@ -17,15 +21,33 @@ bspc rule -a Screenkey manage=off
 bspc rule -a Steam follow=off
 #bspc rule -a firefox-nightly tiling=on
 # bspc rule -a Nightly state=tiled
+bspc rule -a ChessGame state=floating
 
 
 bspc monitor -d 1 2 3 4 5 6 7 8 9 0
 
+# ~/.screenlayout/2020-09-04.sh &
+#~/.screenlayout/2020-09-23.sh &
+#~/.screenlayout/2020-10-08.sh &
+#~/.screenlayout/2020-10-29.sh &
+#~/.screenlayout/2020-11-06.sh &
+#~/.screenlayout/2021-01-28-mini.sh &
+#~/.screenlayout/2021-05-20.sh &
+#~/.screenlayout/2021-06-15.sh &
+~/.screenlayout/2021-06-18.sh &
+# ~/.screenlayout/work-small.sh &
+
+/bin/lxsession &
+
 # xiccd &
 # /etc/profile.d/infinality-settings.sh
 
-# corrupter -add 0 -bheight 30 -boffset 100 -mag 1 - < ~/downloads/bliss.png | feh --bg-fill - &
+# corrupter -add 0 -bheight 30 -boffset 100 -mag 1 - < ~/media/desktops/bliss.png | feh --bg-fill - &
 
-# ~/.bin/bliss &
+dunst &
+
+~/.bin/bliss &
 # feh --bg-fill ~/downloads/bliss-600dpi.png &
 # xsetroot -cursor_name left_ptr &
+
+exec --no-startup-id xrdb ~/.Xresources

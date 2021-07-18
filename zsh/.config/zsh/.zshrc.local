@@ -4,9 +4,14 @@ setopt globdots
 
 setopt histignorespace
 
+autoload -Uz compinit && compinit
+autoload -U edit-command-line
+
 source ~/.config/zsh/aliases.zsh
 source ~/.config/zsh/prompt.zsh
 source ~/.config/zsh/keys.zsh
+source ~/.config/zsh/history-opts.zsh
+source ~/.config/zsh/completion-opts.zsh
 
 source ~/.config/zsh/fzf-settings.zsh
 
@@ -32,3 +37,11 @@ source ~/.config/zsh/elixir.zsh
 
 # Python
 source ~/.config/zsh/python.zsh
+
+# fasd
+[ -f /bin/fasd ] \
+&& eval "$(fasd --init auto)"
+
+# z
+[ -f /bin/zoxide ] \
+&& eval "$(zoxide init zsh)"

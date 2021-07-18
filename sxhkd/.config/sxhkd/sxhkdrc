@@ -46,7 +46,7 @@ super + shift + c
 super + {comma,period}
     bspc desktop -C {backward,forward}
 
-super + bracket{west,east}
+super + bracket{left,right}
     bspc desktop -f {prev,next}
 
 super + alt + shift + {h,j,k,l}
@@ -91,6 +91,15 @@ super + {_,shift + }{1-9,0}
 # super + @button{1-3}
 #     bspc pointer -u
 
+#button9
+#    pactl set-source-mute @DEFAULT_SOURCE@ 0
+#
+#@button9
+#    pactl set-source-mute @DEFAULT_SOURCE@ 1
+
+button8
+    pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
 super + ctrl + backslash
 	slock
 
@@ -100,11 +109,15 @@ super + g
 super + {_,shift + }r
 	bspc node @/ -R {90, 270}
 
+super + ctrl + r
+	bspc node @parent -R 270
+
 super + e
 	bspc node @/ --equalize
 
 super + c
-	firefox-nightly
+	firefox-developer-edition
+	#firefox-nightly
 	#chromium
 	#google-chrome-unstable
 super + shift + s
@@ -119,10 +132,13 @@ super + shift + Return
 
  # alacritty
 super + z
-    st
+    alacritty
 
 super + p
-	dmenu_run -p run: -i -fn 'Ubuntu-9' -sb '#423d41' -nb '#242329'
+	dmenu_run -p run: -i -fn 'Ubuntu-14' -sb '#423d41' -nb '#242329'
+
+super + shift + p
+	passmenu -p pass: -i -fn 'Ubuntu-14' -sf '#fb4934' -sb '#282828' -nb '#3c3836' -nf '#fbf1c7'
 
 # make sxhkd reload its configuration files:
 super + Escape

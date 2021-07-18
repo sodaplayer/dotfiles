@@ -11,6 +11,8 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export VISUAL="nvim"
 export EDITOR="nvim"
 
+export PATH="$PATH:$HOME/.bin"
+
 # Go
 export GOPATH="$XDG_DATA_HOME/go"
 
@@ -25,3 +27,15 @@ export DESK_DIR="$XDG_CONFIG_HOME/desk"
 if (( $+commands[rg] )); then
     export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 fi
+
+# uu
+export GRADLE_CACHE_DIRECTORY="$HOME/uu/.gradle-cache"
+export DOCKER_SECRETS_DIRECTORY="$HOME/uu/secrets"
+
+# Themes
+export QT_STYLE_OVERRIDE="kvantum"
+export BAT_THEME="gruvbox"
+
+
+# LFS
+export LFS=/home/john/sandbox/lfs

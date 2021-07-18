@@ -8,13 +8,13 @@ while getopts ":dc" opt; do
             case $resp in
                 [Yy]* ) rm -rf $MINPAC_DIR ;;
                 * ) exit ;;
-            esac 
+            esac
             exit ;;
         c ) read -p "Delete package directory at $PACK_DIR? (y/N) " resp
             case $resp in
                 [Yy]* ) rm -rf $PACK_DIR ;;
                 * ) exit ;;
-            esac 
+            esac
             exit ;;
     esac
 done

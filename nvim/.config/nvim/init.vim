@@ -18,6 +18,8 @@ set cursorline
 
 set listchars=eol:$,tab:t-,trail:~,precedes:<,extends:>
 
+set inccommand=split
+
 if executable('rg')
     let &grepprg = "rg --vimgrep"
 endif
@@ -40,20 +42,28 @@ if exists('*minpac#init')
     call minpac#add('tpope/vim-repeat')
     call minpac#add('tpope/vim-surround')
     call minpac#add('tpope/vim-endwise')
+    call minpac#add('tpope/vim-fugitive')
+
+    call minpac#add('machakann/vim-highlightedyank')
+    call minpac#add('machakann/vim-sandwich')
 
     call minpac#add('chrisbra/unicode.vim')
 
     call minpac#add('junegunn/fzf')
     call minpac#add('junegunn/fzf.vim')
 
-    call minpac#add('vimwiki/vimwiki')
+    call minpac#add('simnalamburt/vim-mundo')
 
-    call minpac#add('alok/notational-fzf-vim')
+    " call minpac#add('vimwiki/vimwiki')
+    call minpac#add('lervag/wiki.vim')
+    call minpac#add('lervag/lists.vim')
+
+    " call minpac#add('alok/notational-fzf-vim')
 
     " call minpac#add('reasonml-editor/vim-reason-plus')
     call minpac#add('sodaplayer/vim-reason-plus', {'branch': 'patch-1'})
 
-    call minpac#add('jpalardy/vim-slime')
+    " call minpac#add('jpalardy/vim-slime')
     call minpac#add('wlangstroth/vim-racket')
 
     " Plai-Typed
@@ -73,6 +83,10 @@ if exists('*minpac#init')
     "Elixir
     call minpac#add('elixir-editors/vim-elixir')
 
+    " ATS
+    call minpac#add('vmchale/ats-format')
+    call minpac#add('vmchale/ats-vim')
+
     " Go
     call minpac#add('fatih/vim-go')
     " , { 'do', ':GoUpdateBinaries' })
@@ -90,7 +104,7 @@ if exists('*minpac#init')
     " call minpac#add('peitalin/vim-jsx-typescript')
 
     " LaTeX
-    call minpac#add('lervag/vimtex')
+    " call minpac#add('lervag/vimtex')
 
     " LDPL
     call minpac#add('araml/ldpl.vim')
@@ -103,6 +117,15 @@ if exists('*minpac#init')
 
     " SCAD
     call minpac#add('sirtaj/vim-openscad')
+
+    "YAML
+    call minpac#add('stephpy/vim-yaml')
+
+    "Rust
+    call minpac#add('rust-lang/rust.vim')
+
+    " Dockerfile
+    call minpac#add('ekalinin/Dockerfile.vim')
 
     if (executable('npm'))
         call minpac#add('neoclide/coc.nvim', {'do': './install.sh', 'branch': 'release'})
@@ -152,6 +175,8 @@ nmap <Leader>wp :Files ~/docs/wiki<CR>
 nmap <Leader>p :Files<CR>
 
 nmap <Leader>kx :Trim<CR>
+
+nmap <Leader>u :MundoToggle<CR>
 " }}}
 
 " Plugin Settings: {{{
@@ -169,12 +194,17 @@ let g:slime_target = "tmux"
 
 let g:vimwiki_list = [{'path': '~/docs/wiki/'}]
 
+" wiki.vim:
+let g:wiki_root = '~/docs/wiki/'
+
 let g:nv_search_paths = ['~/docs/wiki']
 
 let g:vimtex_compiler_latexmk = { 'options' : [ '-pdf', '-pdflatex="pdflatex --shell-escape %O %S"', '-verbose', '-file-line-error', '-synctex=1', '-interaction=nonstopmode',  ] }
 
 let g:indentLine_char_list = ['│', '╎', '┆', '┊']
 let g:indentLine_concealcursor=""
+
+let g:highlightedyank_highlight_duration = 100
 
 " }}}
 
