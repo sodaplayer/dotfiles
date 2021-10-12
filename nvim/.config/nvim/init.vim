@@ -32,7 +32,9 @@ if exists('*minpac#init')
     call minpac#add('morhetz/gruvbox')
     call minpac#add('junegunn/rainbow_parentheses.vim')
     call minpac#add('ntpeters/vim-better-whitespace')
-    call minpac#add('Yggdroot/indentLine')
+    " call minpac#add('Yggdroot/indentLine')
+    call minpac#add('lukas-reineke/indent-blankline.nvim')
+    call minpac#add('nvim-treesitter/nvim-treesitter')
 
     call minpac#add('preservim/nerdcommenter')
     call minpac#add('preservim/nerdtree')
@@ -44,6 +46,9 @@ if exists('*minpac#init')
     call minpac#add('tpope/vim-endwise')
     call minpac#add('tpope/vim-fugitive')
 
+    call minpac#add('nvim-lua/plenary.nvim')
+    call minpac#add('nvim-telescope/telescope.nvim')
+
     call minpac#add('machakann/vim-highlightedyank')
     call minpac#add('machakann/vim-sandwich')
 
@@ -51,6 +56,9 @@ if exists('*minpac#init')
 
     call minpac#add('junegunn/fzf')
     call minpac#add('junegunn/fzf.vim')
+    call minpac#add('junegunn/vim-easy-align')
+
+    call minpac#add('AndrewRadev/splitjoin.vim')
 
     call minpac#add('simnalamburt/vim-mundo')
 
@@ -127,6 +135,11 @@ if exists('*minpac#init')
     " Dockerfile
     call minpac#add('ekalinin/Dockerfile.vim')
 
+    " Ansible
+    call minpac#add('pearofducks/ansible-vim')
+
+    " HCL
+
     if (executable('npm'))
         call minpac#add('neoclide/coc.nvim', {'do': './install.sh', 'branch': 'release'})
     endif
@@ -159,16 +172,24 @@ noremap <Leader>sv :source $MYVIMRC<CR>
 
 nmap <silent> <Leader>er :RainbowParentheses!!<CR>
 
-nmap <M-CR> <Plug>(coc-codeaction)
+nnoremap <Leader>ff <cmd>Telescope find_files<cr>
+nnoremap <Leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <Leader>fb <cmd>Telescope buffers<cr>
+nnoremap <Leader>fh <cmd>Telescope help_tags<cr>
 
-nmap <Leader>ff <Plug>(coc-format-selected)
-vmap <Leader>ff <Plug>(coc-format-selected)
+xmap gA <Plug>(EasyAlign)
+nmap gA <Plug>(EasyAlign)
 
-nmap <Leader>fr <Plug>(coc-rename)
-vmap <Leader>fr <Plug>(coc-rename)
-
-nmap <Leader>fc <Plug>(coc-fix-current)
-vmap <Leader>fc <Plug>(coc-fix-current)
+" nmap <M-CR> <Plug>(coc-codeaction)
+"
+" nmap <Leader>ff <Plug>(coc-format-selected)
+" vmap <Leader>ff <Plug>(coc-format-selected)
+"
+" nmap <Leader>fr <Plug>(coc-rename)
+" vmap <Leader>fr <Plug>(coc-rename)
+"
+" nmap <Leader>fc <Plug>(coc-fix-current)
+" vmap <Leader>fc <Plug>(coc-fix-current)
 
 nmap <Leader>wp :Files ~/docs/wiki<CR>
 
@@ -204,6 +225,8 @@ let g:vimtex_compiler_latexmk = { 'options' : [ '-pdf', '-pdflatex="pdflatex --s
 let g:indentLine_char_list = ['│', '╎', '┆', '┊']
 let g:indentLine_concealcursor=""
 
+let g:indent_blankline_use_treesitter = v:true
+
 let g:highlightedyank_highlight_duration = 100
 
 " }}}
@@ -221,3 +244,40 @@ command! Today pu=strftime('%F')
 
 command! Trim %s/\s\+$//e
 " }}}
+
+
+command! -nargs=? -range Dec2hex call s:Dec2hex(<line1>, <line2>, '<args>')
+function! s:Dec2hex(line1, line2, arg) range
+  if empty(a:arg)
+    if histget(':', -1) =~# "^'<,'>" && visualmode() !=# 'V'
+      let cmd = 's/\%V\<\d\+\>/\=printf("0x%02x",submatch(0)+0)/g'
+    else
+      let cmd = 's/\<\d\+\>/\=printf("0x%02x",submatch(0)+0)/g'
+    endif
+    try
+      execute a:line1 . ',' . a:line2 . cmd
+    catch
+      echo 'Error: No decimal number found'
+    endtry
+  else
+    echo printf('%x', a:arg + 0)
+  endif
+endfunction
+
+command! -nargs=? -range Hex2dec call s:Hex2dec(<line1>, <line2>, '<args>')
+function! s:Hex2dec(line1, line2, arg) range
+  if empty(a:arg)
+    if histget(':', -1) =~# "^'<,'>" && visualmode() !=# 'V'
+      let cmd = 's/\%V0x\x\+/\=submatch(0)+0/g'
+    else
+      let cmd = 's/0x\x\+/\=submatch(0)+0/g'
+    endif
+    try
+      execute a:line1 . ',' . a:line2 . cmd
+    catch
+      echo 'Error: No hex number starting "0x" found'
+    endtry
+  else
+    echo (a:arg =~? '^0x') ? a:arg + 0 : ('0x'.a:arg) + 0
+  endif
+endfunction
