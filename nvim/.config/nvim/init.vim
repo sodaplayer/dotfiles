@@ -39,12 +39,16 @@ if exists('*minpac#init')
     call minpac#add('preservim/nerdcommenter')
     call minpac#add('preservim/nerdtree')
 
+    call minpac#add('ap/vim-css-color')
+
     call minpac#add('mhinz/vim-signify')
 
     call minpac#add('tpope/vim-repeat')
     call minpac#add('tpope/vim-surround')
     call minpac#add('tpope/vim-endwise')
     call minpac#add('tpope/vim-fugitive')
+
+    call minpac#add('rbong/vim-flog')
 
     call minpac#add('nvim-lua/plenary.nvim')
     call minpac#add('nvim-telescope/telescope.nvim')
@@ -105,6 +109,9 @@ if exists('*minpac#init')
     " CSS
     call minpac#add('stephenway/postcss.vim')
 
+    " CSV
+    call minpac#add('chrisbra/csv.vim')
+
     " JavaScript/TypeScript
      "call minpac#add('leafgarland/typescript-vim')
     " call minpac#add('pangloss/vim-javascript')
@@ -140,8 +147,20 @@ if exists('*minpac#init')
 
     " HCL
 
+    " GLSL
+    call minpac#add('tikhomirov/vim-glsl')
+
+    " MediaWiki
+    call minpac#add('m-pilia/vim-mediawiki')
+
+    " Lisps Janet Scheme
+    call minpac#add('Olical/conjure')
+    call minpac#add('janet-lang/janet.vim')
+
+    call minpac#add('Shougo/deoplete.nvim')
+
     if (executable('npm'))
-        call minpac#add('neoclide/coc.nvim', {'do': './install.sh', 'branch': 'release'})
+        " call minpac#add('neoclide/coc.nvim', {'do': './install.sh', 'branch': 'release'})
     endif
 
 endif
@@ -208,6 +227,7 @@ let g:NERDTreeIgnore = ['\.bs.js$', '\~$', 'node_modules[[dir]]']
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
 
+let g:deoplete#enable_at_startup = 1
 
 let g:sexp_enable_insert_mode_mappings = 0
 
@@ -229,6 +249,9 @@ let g:indent_blankline_use_treesitter = v:true
 
 let g:highlightedyank_highlight_duration = 100
 
+let g:conjure#client#scheme#stdio#command = "petite"
+let g:conjure#client#scheme#stdio#prompt_pattern = "> $?"
+
 " }}}
 
 
@@ -246,6 +269,7 @@ command! Trim %s/\s\+$//e
 " }}}
 
 
+" From https://vim.fandom.com/wiki/Convert_between_hex_and_decimal
 command! -nargs=? -range Dec2hex call s:Dec2hex(<line1>, <line2>, '<args>')
 function! s:Dec2hex(line1, line2, arg) range
   if empty(a:arg)
