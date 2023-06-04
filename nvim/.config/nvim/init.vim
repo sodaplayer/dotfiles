@@ -153,8 +153,12 @@ if exists('*minpac#init')
     " MediaWiki
     call minpac#add('m-pilia/vim-mediawiki')
 
-    " Lisps Janet Scheme
+    " Lisps Janet Scheme Fennel
     call minpac#add('Olical/conjure')
+    call minpac#add('Olical/aniseed')
+    " call minpac#add('eraserhd/parinfer-rust')
+    call minpac#add('gpanders/nvim-parinfer')
+
     call minpac#add('janet-lang/janet.vim')
 
     call minpac#add('Shougo/deoplete.nvim')
